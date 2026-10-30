@@ -1,0 +1,17 @@
+{
+ "parts": {
+  "30-upk.json": {
+   "acts": [
+    "ugolovno-protsessualnyi-kodeks"
+   ],
+   "sha256": "31de0e2e96138afcbcdf2279577c7d1516f970e888d4479d38dfe96ede27e6e2"
+  },
+  "40-trudovoi.json": {
+   "acts": [
+    "trudovoi-kodeks"
+   ],
+   "sha256": "a51448508653129f6afc2d6d975aa89121384e3db2573ab513889ec0a23a1b3d"
+  }
+ },
+ "schema": 1
+}
