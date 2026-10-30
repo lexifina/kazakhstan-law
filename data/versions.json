@@ -1,0 +1,103 @@
+{
+ "country": "KZ",
+ "acts": [
+  {
+   "slug": "konstitutsiya",
+   "short": "Конституция",
+   "title": "Конституция Республики Казахстан (2026)",
+   "url": "https://adilet.zan.kz/rus/docs/K2600000000",
+   "versions": [
+    {
+     "from": "2026-07-01",
+     "units": 108,
+     "source_url": "https://web.archive.org/web/20260827071309/https://adilet.zan.kz/rus/docs/K2600000000",
+     "sha256": "6cf2b42ffb8fa9f8bf72e7a74cba90118586bdccf0344cd0157fa45eb035e65f"
+    }
+   ]
+  },
+  {
+   "slug": "ugolovnyi-kodeks",
+   "short": "УК",
+   "title": "Уголовный кодекс Республики Казахстан",
+   "url": "https://adilet.zan.kz/rus/docs/K1400000226",
+   "versions": [
+    {
+     "from": "2026-09-09",
+     "units": 494,
+     "source_url": "https://web.archive.org/web/20260909103625/https://adilet.zan.kz/rus/docs/K1400000226",
+     "sha256": "f1aa3a34b6720fc578d28dde749629924b9af180c6bc7d75fe23a68eb7473718"
+    }
+   ]
+  },
+  {
+   "slug": "grazhdanskii-kodeks-obshchaya",
+   "short": "ГК (Общая часть)",
+   "title": "Гражданский кодекс Республики Казахстан (Общая часть)",
+   "url": "https://adilet.zan.kz/rus/docs/K940001000_",
+   "versions": [
+    {
+     "from": "2026-09-08",
+     "units": 470,
+     "source_url": "https://web.archive.org/web/20260908163452/https://adilet.zan.kz/rus/docs/K940001000_",
+     "sha256": "7b146afac4cadb8f24d1946712a64a65c8d1e4b1e26c5dd3edace5db58a9f3eb"
+    }
+   ]
+  },
+  {
+   "slug": "grazhdanskii-kodeks-osobennaya",
+   "short": "ГК (Особенная часть)",
+   "title": "Гражданский кодекс Республики Казахстан (Особенная часть)",
+   "url": "https://adilet.zan.kz/rus/docs/K990000409_",
+   "versions": [
+    {
+     "from": "2026-07-23",
+     "units": 816,
+     "source_url": "https://web.archive.org/web/20260723160434/https://adilet.zan.kz/rus/docs/K990000409_",
+     "sha256": "b456a6dd5e25c6489f5fdf5de87a529bb9f655c3e7f4614238e40289a21f704e"
+    }
+   ]
+  },
+  {
+   "slug": "predprinimatelskii-kodeks",
+   "short": "Предпринимательский кодекс",
+   "title": "Предпринимательский кодекс Республики Казахстан",
+   "url": "https://adilet.zan.kz/rus/docs/K1500000375",
+   "versions": [
+    {
+     "from": "2026-09-06",
+     "units": 423,
+     "source_url": "https://web.archive.org/web/20260906223444/https://adilet.zan.kz/rus/docs/K1500000375",
+     "sha256": "be5b7d9dcdfc28e05d922278143a83986a9b259f07462735b3ebe107318f6e87"
+    }
+   ]
+  },
+  {
+   "slug": "ugolovno-protsessualnyi-kodeks",
+   "short": "УПК",
+   "title": "Уголовно-процессуальный кодекс Республики Казахстан",
+   "url": "https://adilet.zan.kz/rus/docs/K1400000231",
+   "versions": [
+    {
+     "from": "2026-09-05",
+     "units": 772,
+     "source_url": "https://web.archive.org/web/20260905131337/https://adilet.zan.kz/rus/docs/K1400000231",
+     "sha256": "eba94ba8ec0284bf75be36bbe288de15ef1f9b331ac8a41a0243856c7eb4a9b8"
+    }
+   ]
+  },
+  {
+   "slug": "trudovoi-kodeks",
+   "short": "ТК",
+   "title": "Трудовой кодекс Республики Казахстан",
+   "url": "https://adilet.zan.kz/rus/docs/K1500000414",
+   "versions": [
+    {
+     "from": "2026-09-06",
+     "units": 252,
+     "source_url": "https://web.archive.org/web/20260906195515/https://adilet.zan.kz/rus/docs/K1500000414",
+     "sha256": "c1fb5138ca09db2584bfb9981bccd066da45bc4e526edf2da39c55222e34af27"
+    }
+   ]
+  }
+ ]
+}

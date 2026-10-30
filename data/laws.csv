@@ -1,0 +1,14 @@
+key,label,kind,title,enacted,published,in_force_days,commits,url
+gk-obshchaya-1994,Постановление Верховного Совета РК от 27 декабря 1994 года,law,Гражданский кодекс Республики Казахстан (Общая часть),1994-12-27,,,0,https://adilet.zan.kz/rus/docs/K940001000_
+gk-osobennaya-1999,Кодекс РК от 1 июля 1999 года № 409-I,law,Гражданский кодекс Республики Казахстан (Особенная часть),1999-07-01,,,0,https://adilet.zan.kz/rus/docs/K990000409_
+uk-2014-226-v,Кодекс РК от 3 июля 2014 года № 226-V,law,Уголовный кодекс Республики Казахстан,2014-07-03,,,0,https://adilet.zan.kz/rus/docs/K1400000226
+upk-2014-231-v,Кодекс РК от 4 июля 2014 года № 231-V,law,Уголовно-процессуальный кодекс Республики Казахстан,2014-07-04,,,0,https://adilet.zan.kz/rus/docs/K1400000231
+pk-2015-375-v,Кодекс РК от 29 октября 2015 года № 375-V,law,Предпринимательский кодекс Республики Казахстан,2015-10-29,,,0,https://adilet.zan.kz/rus/docs/K1500000375
+tk-2015-414-v,Кодекс РК от 23 ноября 2015 года № 414-V,law,Трудовой кодекс Республики Казахстан,2015-11-23,,,0,https://adilet.zan.kz/rus/docs/K1500000414
+referendum-2026-03-15,Referendum of 15 March 2026,referendum,"Конституция Республики Казахстан, принятая на республиканском референдуме 15 марта 2026 года",2026-03-15,,2026-07-01,1,https://adilet.zan.kz/rus/docs/K2600000000
+adilet-oldest-grazhdanskii-kodeks-osobennaya,Adilet (consolidated text),publisher,"Гражданский кодекс Республики Казахстан (Особенная часть): consolidated text as published on Adilet, oldest version available",2026-07-23,2026-07-23,,0,https://adilet.zan.kz/rus/docs/K990000409_
+adilet-oldest-ugolovno-protsessualnyi-kodeks,Adilet (consolidated text),publisher,"Уголовно-процессуальный кодекс Республики Казахстан: consolidated text as published on Adilet, oldest version available",2026-09-05,2026-09-05,,0,https://adilet.zan.kz/rus/docs/K1400000231
+adilet-oldest-predprinimatelskii-kodeks,Adilet (consolidated text),publisher,"Предпринимательский кодекс Республики Казахстан: consolidated text as published on Adilet, oldest version available",2026-09-06,2026-09-06,,0,https://adilet.zan.kz/rus/docs/K1500000375
+adilet-oldest-trudovoi-kodeks,Adilet (consolidated text),publisher,"Трудовой кодекс Республики Казахстан: consolidated text as published on Adilet, oldest version available",2026-09-06,2026-09-06,,0,https://adilet.zan.kz/rus/docs/K1500000414
+adilet-oldest-grazhdanskii-kodeks-obshchaya,Adilet (consolidated text),publisher,"Гражданский кодекс Республики Казахстан (Общая часть): consolidated text as published on Adilet, oldest version available",2026-09-08,2026-09-08,,0,https://adilet.zan.kz/rus/docs/K940001000_
+adilet-oldest-ugolovnyi-kodeks,Adilet (consolidated text),publisher,"Уголовный кодекс Республики Казахстан: consolidated text as published on Adilet, oldest version available",2026-09-09,2026-09-09,,0,https://adilet.zan.kz/rus/docs/K1400000226
