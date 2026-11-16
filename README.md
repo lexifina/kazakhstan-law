@@ -1,35 +1,41 @@
-# Kazakhstan: law history in git
+# Казахстан: история законодательства в git
 
+**Русский** · [English](README.en.md)
 
-The law of Kazakhstan as a git history: one file per article, one commit per version on the day it took effect, and the act that made each change as the commit's author (the publisher, for the oldest version available). `git blame` names the act behind every line; `git log` lists every change to an article; picking a date gives the text in force that day.
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="data/ru/effort-dark.svg">
+<img alt="Законодательство Казахстана в этом репозитории: что в нём есть, изменения по году вступления в силу, полнота по официальным источникам и точность содержимого" src="data/ru/effort-light.svg" width="880">
+</picture>
 
-Part of [lexifina/global-law](https://github.com/lexifina/global-law), one git history for every country's law: this is Kazakhstan's national law, which global-law reads at `kazakhstan/national/acts/`.
+Законодательство Казахстана в виде истории git: один файл на каждую статью, один коммит на каждую редакцию в день её вступления в силу, а автором коммита указан акт, внёсший изменение (для самой ранней доступной редакции — публикатор). `git blame` называет акт, стоящий за каждой строкой; `git log` перечисляет все изменения статьи; выбрав дату, можно получить текст, действовавший в тот день.
 
-**What is in it now:** the Constitution adopted at the referendum of 15 March 2026, in force from 1 July 2026; and six codes, each in the consolidated text Adilet published between July and September 2026: the Civil Code (its General Part and Special Part, two acts here), the Criminal Code, the Criminal Procedure Code, the Entrepreneurial Code and the Labour Code. Each of these 7 acts has one version so far; a code's version is dated by the day its text was captured (see Dates). [`REPRODUCE.md`](REPRODUCE.md) lists them with their dates; [`data/laws.csv`](data/laws.csv) lists the acts the commits name, with their Adilet pages.
+Часть [lexifina/global-law](https://github.com/lexifina/global-law) — единой истории git для законодательства всех стран: здесь национальное законодательство Казахстана, которое global-law читает по пути `kazakhstan/national/acts/`.
 
-Each act is one folder (`trudovoi-kodeks/` is the Трудовой кодекс Республики Казахстан, the Labour Code, Code of 23 November 2015 No. 414-V), with one file per article (`st-NNN.md`), one per heading of a part, section or chapter (`div-NNN.md`), and a `README.md` listing them. The Constitution is `konstitutsiya/`: `preambula.md`, `razdel-NN.md` (the headings of its 11 sections) and `st-001.md` to `st-096.md`.
+**Что здесь сейчас:** Конституция, принятая на республиканском референдуме 15 марта 2026 года и действующая с 1 июля 2026 года, и шесть кодексов, каждый в консолидированном тексте, опубликованном «Әділет» в период с июля по сентябрь 2026 года: Гражданский кодекс (Общая часть и Особенная часть — здесь это два акта), Уголовный кодекс, Уголовно-процессуальный кодекс, Предпринимательский кодекс и Трудовой кодекс. У каждого из этих 7 актов пока по одной редакции; редакция кодекса датирована днём, когда был сохранён её текст (см. «Даты»). [`REPRODUCE.md`](REPRODUCE.md) перечисляет их с датами; [`data/laws.csv`](data/laws.csv) перечисляет акты, названные в коммитах, со ссылками на их страницы в «Әділет».
 
-The text is in Russian, as Adilet publishes it; state organisations and local self-government bodies use Russian officially alongside Kazakh, the state language (article 9 of the Constitution). Adilet's English version is an unofficial translation and is not part of this record.
+Каждый акт — это одна папка (`trudovoi-kodeks/` — Трудовой кодекс Республики Казахстан от 23 ноября 2015 года № 414-V), в которой по одному файлу на каждую статью (`st-NNN.md`), по одному на каждый заголовок части, раздела или главы (`div-NNN.md`) и `README.md` с их перечнем. Конституция находится в `konstitutsiya/`: `preambula.md`, `razdel-NN.md` (заголовки её 11 разделов) и файлы с `st-001.md` по `st-096.md`.
 
-## Questions as git commands
+Текст приводится на русском языке в том виде, в каком его публикует «Әділет»; в государственных организациях и органах местного самоуправления наравне с казахским языком, являющимся государственным, официально употребляется русский язык (статья 9 Конституции). Английская версия «Әділет» является неофициальным переводом и в эту запись не входит.
 
-| Question | Command |
+## Вопросы в виде команд git
+
+| Вопрос | Команда |
 | --- | --- |
-| Every change to Article 1 of the Labour Code | `git log -p --word-diff -- trudovoi-kodeks/st-001.md` |
-| Which act wrote each line of Article 1? | `git blame trudovoi-kodeks/st-001.md` |
-| Every version of the Labour Code, with the day each took effect | `git log --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- trudovoi-kodeks ":(exclude)trudovoi-kodeks/README.md"` |
-| Article 1 as in force on 1 October 2026 | `python tools/on.py 2026-10-01 trudovoi-kodeks st-001` |
+| Все изменения статьи 1 Трудового кодекса | `git log -p --word-diff -- trudovoi-kodeks/st-001.md` |
+| Какой акт написал каждую строку статьи 1? | `git blame trudovoi-kodeks/st-001.md` |
+| Все редакции Трудового кодекса с днём вступления в силу каждой из них | `git log --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- trudovoi-kodeks ":(exclude)trudovoi-kodeks/README.md"` |
+| Статья 1 в редакции, действовавшей на 1 октября 2026 года | `python tools/on.py 2026-10-01 trudovoi-kodeks st-001` |
 
-**Outside git**, we also host this record publicly, for free:
+**Вне git** мы также бесплатно и открыто размещаем эту запись:
 
-- **[Ask Claude about the law of Kazakhstan](https://global-law.lexifina.com/v1/try_claude?country=kazakhstan)**: opens Claude with a first question ready.
-- **[Ask ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=kazakhstan)**: the same question in ChatGPT.
-- **[Search Kazakhstan's law on our site](https://lexifina.com/law?country=kazakhstan&q=%D0%B5%D0%B6%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9+%D1%82%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9+%D0%BE%D1%82%D0%BF%D1%83%D1%81%D0%BA)**: a search for "ежегодный трудовой отпуск" (annual leave), with each provision's text and its versions, no account needed.
-- **[Developer REST API](https://global-law.lexifina.com/v1/search_law?query=%D0%B5%D0%B6%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9+%D1%82%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9+%D0%BE%D1%82%D0%BF%D1%83%D1%81%D0%BA&jurisdiction=kazakhstan)**: the same search as JSON, with no key. See the [documentation here](https://lexifina.com/api/global-law).
+- **[Спросить Claude о законодательстве Казахстана](https://global-law.lexifina.com/v1/try_claude?country=kazakhstan)**: открывает Claude с уже подготовленным первым вопросом.
+- **[Спросить ChatGPT](https://global-law.lexifina.com/v1/try_chatgpt?country=kazakhstan)**: тот же вопрос в ChatGPT.
+- **[Искать в законодательстве Казахстана на нашем сайте](https://lexifina.com/law?country=kazakhstan&q=%D0%B5%D0%B6%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9+%D1%82%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9+%D0%BE%D1%82%D0%BF%D1%83%D1%81%D0%BA)**: поиск по запросу «ежегодный трудовой отпуск» с текстом каждого положения и его редакциями, без учётной записи.
+- **[REST API для разработчиков](https://global-law.lexifina.com/v1/search_law?query=%D0%B5%D0%B6%D0%B5%D0%B3%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9+%D1%82%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%BE%D0%B9+%D0%BE%D1%82%D0%BF%D1%83%D1%81%D0%BA&jurisdiction=kazakhstan)**: тот же поиск в формате JSON, без ключа. См. [документацию здесь](https://lexifina.com/api/global-law).
 
-Both assistants read the record through the free Global law connector (MCP, `https://global-law.lexifina.com/mcp`); the first time, the chat gives you the link that adds it. Ask in Russian or in English.
+Оба ассистента читают запись через бесплатный коннектор Global law (MCP, `https://global-law.lexifina.com/mcp`); при первом обращении чат даст ссылку для его подключения. Спрашивать можно на русском или на английском.
 
-**Host it yourself easily.** All it takes is git and Python, and the tools run on your machine:
+**Легко разместить у себя.** Нужны только git и Python, а инструменты работают на вашем компьютере:
 
 ```sh
 git clone --depth 1 https://github.com/lexifina/global-law && cd global-law
@@ -37,51 +43,53 @@ python3 tools/countries.py add kazakhstan/national/acts
 python3 tools/law.py show 2026-11-01 kazakhstan/national/acts/trudovoi-kodeks/st-001.md
 ```
 
-Opened in Claude Code, Cursor, VS Code or Codex, the clone also starts a local MCP server with the same tools ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
+При открытии в Claude Code, Cursor, VS Code или Codex клон также запускает локальный MCP-сервер с теми же инструментами ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
 
-## Dates
+## Даты
 
-Each commit is dated at noon, Asia/Almaty, on the day the version took effect, and carries it in its `In-force:` trailer:
+Каждый коммит датирован полднем по времени Asia/Almaty дня, в который редакция вступила в силу, и содержит этот день в трейлере `In-force:`:
 
-- for the Constitution, 1 July 2026, the day its article 94 gives; the referendum day, 15 March 2026, is in its `Enacted:` trailer;
-- for each code, the day of the Internet Archive capture of the Adilet page its text was read from (23 July to 9 September 2026), not the day the code first took effect (the Labour Code, for one, has applied since 1 January 2016).
+- для Конституции — 1 июля 2026 года, день, указанный в её статье 94; день референдума, 15 марта 2026 года, указан в трейлере `Enacted:`;
+- для каждого кодекса — день снимка страницы «Әділет» в Internet Archive, из которого прочитан его текст (с 23 июля по 9 сентября 2026 года), а не день первоначального вступления кодекса в силу (например, Трудовой кодекс применяется с 1 января 2016 года).
 
-The Constitution is credited to the Referendum of 15 March 2026. Each code's one text is the "oldest version available", credited to the publisher, the Adilet legal information system (Ministry of Justice of Kazakhstan); its commit message names the code that adopted it.
+Автором Конституции указан Республиканский референдум 15 марта 2026 года. Единственный текст каждого кодекса является «самой ранней доступной редакцией» (oldest version available), и его автором указан публикатор — информационно-правовая система «Әділет» (Министерство юстиции Республики Казахстан); в сообщении коммита назван кодекс, которым он был принят.
 
-## How it is checked
+## Как это проверяется
 
-- `tools/check_repo.py` reads every version back from git on the day it took effect and on the day before, and compares it with the corpus it was built from: 7 versions of 7 acts, no mismatches.
-- `tools/verify_part.py` compares an act's text word by word with its Adilet capture; the only differences allowed are Adilet's notes and other editorial matter, which the record leaves out. The sha256 of every capture is in [`data/versions.json`](data/versions.json).
-- A second build from the same corpus gave the same hashes for every commit and tag; trailers parse, and there are no merge commits and no dates going backwards. Results are in [`REPRODUCE.md`](REPRODUCE.md).
-- History is append-only: new acts and versions are added on top, and no published commit is rewritten.
+- `tools/check_repo.py` считывает каждую редакцию из git на день её вступления в силу и на предшествующий день и сравнивает с корпусом, из которого она построена: 7 редакций 7 актов, расхождений нет.
+- `tools/verify_part.py` сравнивает текст акта пословно с его снимком из «Әділет»; допускаются только отличия в сносках «Әділет» и другом редакционном материале, который в запись не включается. Хеш sha256 каждого снимка приведён в [`data/versions.json`](data/versions.json).
+- Повторная сборка из того же корпуса дала те же хеши для каждого коммита и тега; трейлеры разбираются, коммитов слияния нет, и даты не идут назад. Результаты приведены в [`REPRODUCE.md`](REPRODUCE.md).
+- История только дополняется: новые акты и редакции добавляются сверху, и ни один опубликованный коммит не переписывается.
 
-## What it does not show
+## Чего здесь нет
 
-- **Earlier versions of the codes.** Adilet keeps them, but they were not read: each code has its 2026 text only, so `git blame` names the publisher, not the amending law.
-- **The Constitution of 30 August 1995**, which the 2026 Constitution replaced on 1 July 2026, and its amendments.
-- **Any other law**: other codes and laws, presidential decrees, government resolutions, local acts, case law and treaties are not here.
-- **Adilet's notes**: the footnotes recording amendments («Сноска.») and the Institute's notes («Примечание ИЗПИ») are not in the files.
-- **The Kazakh text.**
+- **Прежних редакций кодексов.** «Әділет» их хранит, но они не прочитаны: у каждого кодекса есть только текст 2026 года, поэтому `git blame` называет публикатора, а не изменяющий закон.
+- **Конституции от 30 августа 1995 года**, которую Конституция 2026 года заменила с 1 июля 2026 года, и изменений к ней.
+- **Иного законодательства**: других кодексов и законов, указов Президента, постановлений Правительства, местных актов, судебной практики и международных договоров здесь нет.
+- **Примечаний «Әділет»**: сносок об изменениях («Сноска.») и примечаний Института («Примечание ИЗПИ») в файлах нет.
+- **Текста на казахском языке.**
 
-## Sources
+## Источники
 
-| Source | Kind | Past versions | Notes |
+| Источник | Вид | Прежние редакции | Примечания |
 | --- | --- | --- | --- |
-| [Adilet](https://adilet.zan.kz) (Institute of Legislation and Legal Information, Ministry of Justice) | Official legal information system | yes, but only the current text was read | The Russian text of each act, read from Internet Archive captures of its page (27 August 2026 for the Constitution; each code's capture date is its version's date) |
+| [«Әділет»](https://adilet.zan.kz) (Институт законодательства и правовой информации Республики Казахстан, Министерство юстиции) | Официальная информационно-правовая система | есть, но прочитан только действующий текст | Текст каждого акта на русском языке, прочитанный со снимков его страницы в Internet Archive (27 августа 2026 года для Конституции; дата снимка каждого кодекса является датой его редакции) |
 
-## Licence
+## Лицензия
 
-See [`LICENSE`](LICENSE). Laws are not objects of copyright in Kazakhstan (Law on Copyright and Related Rights, article 7); Lexifina's arrangement, tables, commit messages and tools may be reused under CC BY 4.0.
+См. [`LICENSE`](LICENSE). Законы в Казахстане не являются объектами авторского права (Закон «Об авторском праве и смежных правах», статья 7); подборку, таблицы, сообщения коммитов и инструменты Lexifina можно использовать повторно на условиях CC BY 4.0.
 
-No AI model wrote, translated or corrected legal text, and none runs when the history is built; the scripts were written by Claude Code running Claude Opus 5.5 (see [`REPRODUCE.md`](REPRODUCE.md)).
+Ни одна модель ИИ не писала, не переводила и не исправляла юридический текст, и ни одна не запускается при сборке истории; скрипты написаны Claude Code на модели Claude Opus 5.5 (см. [`REPRODUCE.md`](REPRODUCE.md)).
 
-## More
+Это перевод английской версии ([README.en.md](README.en.md)); при расхождениях действует английская версия.
 
-From [lexifina/global-law](https://github.com/lexifina/global-law):
+## Ещё
 
-- [FEATURES.md](https://github.com/lexifina/global-law/blob/main/FEATURES.md): every feature, and what every corpus must support (`git blame`, `law.py`, the MCP tools)
-- [FAQ.md](https://github.com/lexifina/global-law/blob/main/FAQ.md): questions and answers · [CONTRIBUTING.md](https://github.com/lexifina/global-law/blob/main/CONTRIBUTING.md): proposing changes · [MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md): the MCP server · [REPRODUCE.md](https://github.com/lexifina/global-law/blob/main/REPRODUCE.md): how it was built · [CHANGELOG.md](https://github.com/lexifina/global-law/blob/main/CHANGELOG.md)
-- [FRESHNESS.md](https://github.com/lexifina/global-law/blob/main/FRESHNESS.md): how current each corpus is · [Monitoring](https://github.com/lexifina/global-law/tree/main/monitoring): whether updates are running · [WATCHING.md](https://github.com/lexifina/global-law/blob/main/WATCHING.md): how each official source is watched for changes
-- [performance/](https://github.com/lexifina/global-law/tree/main/performance): how fast the tools are, measured
-- [visualisations/](https://github.com/lexifina/global-law/tree/main/visualisations): charts and bridges across the world's law
-- [Vulnerabilities](https://github.com/lexifina/global-law/tree/main/vulnerabilities): mistakes in legislation as published
+Из репозитория [lexifina/global-law](https://github.com/lexifina/global-law) (на английском):
+
+- [FEATURES.md](https://github.com/lexifina/global-law/blob/main/FEATURES.md): все функции и что должен поддерживать каждый корпус (`git blame`, `law.py`, инструменты MCP)
+- [FAQ.md](https://github.com/lexifina/global-law/blob/main/FAQ.md): вопросы и ответы · [CONTRIBUTING.md](https://github.com/lexifina/global-law/blob/main/CONTRIBUTING.md): как предложить изменения · [MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md): MCP-сервер · [REPRODUCE.md](https://github.com/lexifina/global-law/blob/main/REPRODUCE.md): как он собран · [CHANGELOG.md](https://github.com/lexifina/global-law/blob/main/CHANGELOG.md)
+- [FRESHNESS.md](https://github.com/lexifina/global-law/blob/main/FRESHNESS.md): насколько актуален каждый корпус · [Мониторинг](https://github.com/lexifina/global-law/tree/main/monitoring): работают ли обновления · [WATCHING.md](https://github.com/lexifina/global-law/blob/main/WATCHING.md): как каждый официальный источник отслеживается на изменения
+- [performance/](https://github.com/lexifina/global-law/tree/main/performance): насколько быстры инструменты, по замерам
+- [visualisations/](https://github.com/lexifina/global-law/tree/main/visualisations): графики и связи в праве всего мира
+- [Уязвимости](https://github.com/lexifina/global-law/tree/main/vulnerabilities): ошибки в актах в опубликованном виде
