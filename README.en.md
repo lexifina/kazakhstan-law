@@ -60,6 +60,7 @@ The Constitution is credited to the Referendum of 15 March 2026. Each code's one
 - `tools/verify_part.py` compares an act's text word by word with its Adilet capture; the only differences allowed are Adilet's notes and other editorial matter, which the record leaves out. The sha256 of every capture is in [`data/versions.json`](data/versions.json).
 - A second build from the same corpus gave the same hashes for every commit and tag; trailers parse, and there are no merge commits and no dates going backwards. Results are in [`REPRODUCE.md`](REPRODUCE.md).
 - History is append-only: new acts and versions are added on top, and no published commit is rewritten.
+- [vulnerabilities/](vulnerabilities/README.en.md): possible drafting mistakes in this law, found by global-law's detectors and checked by hand. Not run yet.
 
 ## What it does not show
 
@@ -80,6 +81,10 @@ The Constitution is credited to the Referendum of 15 March 2026. Each code's one
 See [`LICENSE`](LICENSE). Laws are not objects of copyright in Kazakhstan (Law on Copyright and Related Rights, article 7); Lexifina's arrangement, tables, commit messages and tools may be reused under CC BY 4.0.
 
 No AI model wrote, translated or corrected legal text, and none runs when the history is built; the scripts were written by Claude Code running Claude Opus 5.5 (see [`REPRODUCE.md`](REPRODUCE.md)).
+
+## Visualisations
+
+- [visualisations/](visualisations/README.en.md): charts drawn from this repository. Not drawn yet.
 
 ## More
 
