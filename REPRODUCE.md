@@ -2,6 +2,24 @@
 
 This file is written by the build on 2026-10-30, the day the source data was retrieved.
 
+## Adilet editions (2026-11-27)
+
+The first build above (7 acts, one capture-dated version each) is superseded: its folders are removed by
+`Kind: correction` commits as each act's dated history is added. The record is now built by
+`scripts/kazakhstan-law/runner` (kz_fetch.py, kz_build.py) from the JSON API the Adilet site itself reads:
+
+- listing: `POST https://adilet.zan.kz/api/search` with `{"filters": {"document_type": <type>, "language": "rus",
+  "years": [<year>]}}`, by type (and by year for laws and Supreme Court resolutions);
+- per act: `GET /api/documents/by-ngr/<registration number>`, `GET /api/documents/<id>/versions`, and
+  `GET /api/documents/<edition id>` for each edition's HTML text.
+
+No login. robots.txt allows `by-ngr`, `versions` and `documents/<id>` for general agents and disallows `/api/search`
+(advisory; the listing is read once, slowly). Pace: one request in flight about a second apart, stepping up to at
+most three after ten clean minutes and back to one at the first timeout or 5xx; 403/429 stop the run. Adilet's Terms
+of Use bar bots that load it heavily and require it to be named as the source.
+
+Each edition is dated as STRUCTURE.md says; editorial notes (span.note, red ИЗПИ notes) are left out of the text.
+
 ## Sources
 
 | Source | Address | Retrieved | Licence |

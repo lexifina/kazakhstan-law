@@ -11,9 +11,9 @@ The law of Kazakhstan as a git history: one file per article, one commit per ver
 
 Part of [lexifina/global-law](https://github.com/lexifina/global-law), one git history for every country's law: this is Kazakhstan's national law, which global-law reads at `kazakhstan/national/acts/`.
 
-**What is in it now:** the Constitution adopted at the referendum of 15 March 2026, in force from 1 July 2026; and six codes, each in the consolidated text Adilet published between July and September 2026: the Civil Code (its General Part and Special Part, two acts here), the Criminal Code, the Criminal Procedure Code, the Entrepreneurial Code and the Labour Code. Each of these 7 acts has one version so far; a code's version is dated by the day its text was captured (see Dates). [`REPRODUCE.md`](REPRODUCE.md) lists them with their dates; [`data/laws.csv`](data/laws.csv) lists the acts the commits name, with their Adilet pages.
+**What is in it now:** the Constitutions of 1993, 1995 (with every edition: 1998, 2007, 2011, 2017, 2019, 2022) and 2026; the codes, in force and repealed (Civil, Criminal, Criminal Procedure, Civil Procedure, Labour, Land, Tax, Administrative Offences, Entrepreneurial and the others), each with every dated edition Adilet keeps; and constitutional laws, laws, decrees with the force of law and the normative resolutions of the Constitutional and Supreme Courts, added as they are read (about 4,400 acts listed). [`STRUCTURE.md`](STRUCTURE.md) gives the layout and the dating rules.
 
-Each act is one folder (`trudovoi-kodeks/` is the Трудовой кодекс Республики Казахстан, the Labour Code, Code of 23 November 2015 No. 414-V), with one file per article (`st-NNN.md`), one per heading of a part, section or chapter (`div-NNN.md`), and a `README.md` listing them. The Constitution is `konstitutsiya/`: `preambula.md`, `razdel-NN.md` (the headings of its 11 sections) and `st-001.md` to `st-096.md`.
+Folders are named in Russian, by type and year: `кодексы/2015/трудовой-кодекс/` is the Labour Code (Code of 23 November 2015 No. 414-V), `законы/<year>/<number>-<title>/` a law, `конституция/2026/` the Constitution of 2026. Each act folder has one file per article (`статья-001.md`, `статья-065-1.md`), with its section and chapter on its last lines, the text before the first article in `преамбула.md`, and a `README.md`. The first build's transliterated folders (`trudovoi-kodeks/` and six others) were removed as each act's dated history was added.
 
 The text is in Russian, as Adilet publishes it; state organisations and local self-government bodies use Russian officially alongside Kazakh, the state language (article 9 of the Constitution). Adilet's English version is an unofficial translation and is not part of this record.
 
@@ -21,10 +21,10 @@ The text is in Russian, as Adilet publishes it; state organisations and local se
 
 | Question | Command |
 | --- | --- |
-| Every change to Article 1 of the Labour Code | `git log -p --word-diff -- trudovoi-kodeks/st-001.md` |
-| Which act wrote each line of Article 1? | `git blame trudovoi-kodeks/st-001.md` |
-| Every version of the Labour Code, with the day each took effect | `git log --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- trudovoi-kodeks ":(exclude)trudovoi-kodeks/README.md"` |
-| Article 1 as in force on 1 October 2026 | `python tools/on.py 2026-10-01 trudovoi-kodeks st-001` |
+| Every change to Article 1 of the Labour Code | `git log -p --word-diff -- кодексы/2015/трудовой-кодекс/статья-001.md` |
+| Which act wrote each line of Article 1? | `git blame кодексы/2015/трудовой-кодекс/статья-001.md` |
+| Every version of the Labour Code, with the day each took effect | `git log --format="%h %(trailers:key=In-force,valueonly,separator=) %an" -- кодексы/2015/трудовой-кодекс` |
+| Article 1 as in force on 1 October 2020 | `git show $(git rev-list -1 --before=2020-10-02 HEAD -- кодексы/2015/трудовой-кодекс):кодексы/2015/трудовой-кодекс/статья-001.md` |
 
 **Outside git**, we also host this record publicly, for free:
 
@@ -40,33 +40,32 @@ Both assistants read the record through the free Global law connector (MCP, `htt
 ```sh
 git clone --depth 1 https://github.com/lexifina/global-law && cd global-law
 python3 tools/countries.py add kazakhstan/national/acts
-python3 tools/law.py show 2026-11-01 kazakhstan/national/acts/trudovoi-kodeks/st-001.md
+python3 tools/law.py show 2026-11-01 kazakhstan/national/acts/кодексы/2015/трудовой-кодекс/статья-001.md
 ```
 
 Opened in Claude Code, Cursor, VS Code or Codex, the clone also starts a local MCP server with the same tools ([MCP.md](https://github.com/lexifina/global-law/blob/main/MCP.md)).
 
 ## Dates
 
-Each commit is dated at noon, Asia/Almaty, on the day the version took effect, and carries it in its `In-force:` trailer:
+Each commit is one Adilet edition of an act, dated at noon, Asia/Almaty, on the day of that edition, and carries it in its `In-force:` trailer:
 
-- for the Constitution, 1 July 2026, the day its article 94 gives; the referendum day, 15 March 2026, is in its `Enacted:` trailer;
-- for each code, the day of the Internet Archive capture of the Adilet page its text was read from (23 July to 9 September 2026), not the day the code first took effect (the Labour Code, for one, has applied since 1 January 2016).
+- for a later edition, the day Adilet gives the edition (its revision date);
+- for the first edition, the day the text's own commencement article gives ("вводится в действие с ...", "со дня первого официального опубликования", "по истечении десяти календарных дней ..." counted from the publication day Adilet records); where that cannot be read, or falls after a later edition, the adoption day, with the stated day in `Takes-effect:`. The 2026 Constitution is dated 1 July 2026, the day its article 94 gives.
 
-The Constitution is credited to the Referendum of 15 March 2026. Each code's one text is the "oldest version available", credited to the publisher, the Adilet legal information system (Ministry of Justice of Kazakhstan); its commit message names the code that adopted it.
+`In-force-basis:` says which rule gave each day; editions dated after the build day are held. Each later edition is credited to the latest amending act whose note first appears in it (`Amended-by:` lists them); others to the act itself. Commits before 1970 are dated 1 January 1970 with the real day in the subject and in `In-force:`.
 
 ## How it is checked
 
-- `tools/check_repo.py` reads every version back from git on the day it took effect and on the day before, and compares it with the corpus it was built from: 7 versions of 7 acts, no mismatches.
-- `tools/verify_part.py` compares an act's text word by word with its Adilet capture; the only differences allowed are Adilet's notes and other editorial matter, which the record leaves out. The sha256 of every capture is in [`data/versions.json`](data/versions.json).
-- A second build from the same corpus gave the same hashes for every commit and tag; trailers parse, and there are no merge commits and no dates going backwards. Results are in [`REPRODUCE.md`](REPRODUCE.md).
+- Every commit names the Adilet edition it was read from (`Source-edition:`) and the sha256 of that edition's text (`Source-sha256:`), so any version can be compared with its source.
+- Within each act, editions are committed in date order; an edition older than the one already recorded is held, not inserted. There are no merge commits.
+- `tools/` and `data/` hold the first build's checks over its 7 capture-dated versions; they do not cover the Adilet editions.
 - History is append-only: new acts and versions are added on top, and no published commit is rewritten.
 - [vulnerabilities/](vulnerabilities/README.en.md): possible drafting mistakes in this law, found by global-law's detectors and checked by hand. Not run yet.
 
 ## What it does not show
 
-- **Earlier versions of the codes.** Adilet keeps them, but they were not read: each code has its 2026 text only, so `git blame` names the publisher, not the amending law.
-- **The Constitution of 30 August 1995**, which the 2026 Constitution replaced on 1 July 2026, and its amendments.
-- **Any other law**: other codes and laws, presidential decrees, government resolutions, local acts, case law and treaties are not here.
+- **Acts Adilet's search does not list**: the record holds the acts its type-by-year listing returned; some acts are missing from it.
+- **Government resolutions, ministerial orders, local acts, treaties and case law** (the Supreme Court's bank of court acts is behind a CAPTCHA).
 - **Adilet's notes**: the footnotes recording amendments («Сноска.») and the Institute's notes («Примечание ИЗПИ») are not in the files.
 - **The Kazakh text.**
 
@@ -74,11 +73,11 @@ The Constitution is credited to the Referendum of 15 March 2026. Each code's one
 
 | Source | Kind | Past versions | Notes |
 | --- | --- | --- | --- |
-| [Adilet](https://adilet.zan.kz) (Institute of Legislation and Legal Information, Ministry of Justice) | Official legal information system | yes, but only the current text was read | The Russian text of each act, read from Internet Archive captures of its page (27 August 2026 for the Constitution; each code's capture date is its version's date) |
+| [Adilet](https://adilet.zan.kz) (Institute of Legislation and Legal Information, Ministry of Justice) | Official legal information system | yes, every edition | The Russian text of each edition, from the JSON the site itself reads (`/api/documents/...`), at about one request a second |
 
 ## Licence
 
-See [`LICENSE`](LICENSE). Laws are not objects of copyright in Kazakhstan (Law on Copyright and Related Rights, article 7); Lexifina's arrangement, tables, commit messages and tools may be reused under CC BY 4.0.
+See [`LICENSE`](LICENSE). Official documents, laws among them, are not objects of copyright in Kazakhstan (Law on Copyright and Related Rights, article 8); Adilet's terms ask that it be named as the source. Lexifina's arrangement, tables, commit messages and tools are dedicated to the public domain (CC0 1.0).
 
 No AI model wrote, translated or corrected legal text, and none runs when the history is built; the scripts were written by Claude Code running Claude Opus 5.5 (see [`REPRODUCE.md`](REPRODUCE.md)).
 

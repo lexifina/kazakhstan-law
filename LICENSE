@@ -1,12 +1,17 @@
-The legal text is the Constitution of the Republic of Kazakhstan as published by the Adilet legal information
-system (adilet.zan.kz) of the Institute of Legislation and Legal Information, Ministry of Justice of the
-Republic of Kazakhstan. Laws are not objects of copyright under the Law of the Republic of Kazakhstan on
-Copyright and Related Rights (article 7). Source: https://adilet.zan.kz/rus/docs/K2600000000
+The legal texts in this repository are the Constitution, codes, laws, decrees and normative resolutions of the
+Republic of Kazakhstan as published by the Adilet legal information system (adilet.zan.kz) of the Institute of
+Legislation and Legal Information, Ministry of Justice of the Republic of Kazakhstan.
 
-The page was read from an Internet Archive capture (web.archive.org); the capture time is recorded in the
-corpus data and REPRODUCE.md.
+Official documents (laws, court decisions and other texts of a legislative, administrative or judicial character)
+are not objects of copyright under the Law of the Republic of Kazakhstan on Copyright and Related Rights, article
+8(1). Adilet's Terms of Use (https://adilet.zan.kz/legal/polzovatelskoe-soglashenie.docx, point 4.3.2) allow its
+materials to be used for personal, informational, research and professional purposes and require Adilet to be named
+as the source when they are quoted or distributed: source, НЦПС «Әділет» / ИПС «Әділет», https://adilet.zan.kz.
 
-The arrangement of this repository, its tables, commit messages and tools are by Lexifina and may be
-reused under the Creative Commons Attribution 4.0 International licence
-(https://creativecommons.org/licenses/by/4.0/). This repository is not legal advice and not an official
-publication.
+The first build's text (removed) was read from Internet Archive captures of Adilet pages.
+
+Lexifina's own work in this repository (the arrangement, tables, commit messages, STRUCTURE.md, corpus.json and
+tools) is dedicated to the public domain under CC0 1.0 Universal
+(https://creativecommons.org/publicdomain/zero/1.0/).
+
+This repository is not legal advice and not an official publication.
